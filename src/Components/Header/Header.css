@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Logo {
+    border-radius: 10px;
+    height: 80px;
+    cursor: pointer;
+}
