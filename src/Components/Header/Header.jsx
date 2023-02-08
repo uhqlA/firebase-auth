@@ -1,7 +1,8 @@
 
 import { useNavigate, useLocation } from 'react-router-dom';
 import React from 'react';
-import Logo from "../Assets/logo.png";
+
+import Logo from "../Assets/logo2.png";
 import "./Header.css"
 
 function Header() {
