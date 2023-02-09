@@ -3,6 +3,8 @@ import "./ForgetPassword.css"
 
 import { Link } from "react-router-dom";
 import OAuth from "../../OAuth/OAuth";
+import { toast } from "react-toastify";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 
 function ForgetPassword() {
@@ -13,6 +15,19 @@ function ForgetPassword() {
     function onChange(e) {
         setEmail (e.target.value)
         }
+
+        async function onSubmit(e){
+            e.preventDefault ()
+                try {
+                    const auth = getAuth ()
+                    await sendPasswordResetEmail (auth, email)
+                    toast.success ("Link with password recovery was send to your email");
+
+                }catch (error){
+                    toast.error ("Could not send reset password");
+                }
+            
+        }
     
     return (
         <section className="section">
@@ -21,7 +36,7 @@ function ForgetPassword() {
             }}>Forgot Password</h1>
             <div className="container">
                 <div className="form">
-                    <form >
+                    <form onSubmit={onSubmit}>
                         <input className="inputEmail"
                             type="email"
                             id="email"
