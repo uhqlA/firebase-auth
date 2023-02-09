@@ -80,3 +80,50 @@ transition: ease-in-out;
     margin-left: auto;
     margin-right: auto;
 }
+
+.account {
+  display: flex;
+  justify-content: space-between;
+  font-size: small;
+  white-space: nowrap;
+}
+
+.btn{
+  width: 100%;
+  background-color: green;
+  margin-top: 20px;
+  border-radius: 5px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  box-shadow: blue;
+}
+
+.btn:hover{
+   background-color: olive;
+   transition: ease-in-out;
+}
+
+.div-1{
+  padding-top: 9px;
+  font-size: 20px;
+  font-weight: 600;  
+  margin-top: 24px;
+  margin-bottom: 24px;
+  /* display: flex; */
+  align-items: center;
+}
+
+@media screen and (min-width: 640px) {
+ .account{
+  white-space: nowrap;
+  font-size: 18px;
+  line-height: 28px;
+ }
+ .register{
+  font-size: 15px;
+ }
+}
