@@ -3,6 +3,11 @@ import "./Register.css"
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import { Link } from "react-router-dom";
 import OAuth from "../../OAuth/OAuth";
+import { createUserWithEmailAndPassword, getAuth,updateProfile } from "firebase/auth";
+import { db } from "../../../Firebase/Firebase"
+import { serverTimestamp, setDoc, doc } from "firebase/firestore";
+//import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 function Register() {
@@ -14,25 +19,51 @@ function Register() {
         password: "",
         confirmpassword: "",    });
     const { name, email, password,confirmpassword } = formData;
+    //const navigate = useNavigate ();
     function onChange(e) {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.id]: e.target.value,
         }))
     }
+    async function onSubmit (e){
+        e.preventDefault ()
+
+        try {
+            const auth = getAuth ();
+           const userCredential = await createUserWithEmailAndPassword ( auth, email,password);
+
+           updateProfile(auth.currentUser, {
+            displayName : name
+           })
+           const user = userCredential.user;
+           const formDataCopy = {...formData} //object
+           delete formDataCopy.password;
+           formDataCopy.timestamp = serverTimestamp
+           ();
+                //sends data to db (a promise)
+           await setDoc(doc(db, "users", user.uid), formDataCopy)
+        //    toast.success("Registration successful");
+        //    navigate("/")
+        } catch (error){
+            toast.error("Something went wrong while Registering")
+        }
+    }
     return (
         <section className="section">
-            <h1>Register</h1>
+            <h1 style={{
+              fontSize: "20px",
+            }}>Register</h1>
             <div className="container">
                 <div className="form">
-                    <form >
+                    <form onSubmit={onSubmit}>
                     <input className="inputEmail"
                             type="text"
                             id="name"
                             value={name}
                             onChange={onChange}
                             placeholder="Full Name"
-                            required />
+                            />
 
                         <input className="inputEmail"
                             type="email"
@@ -40,7 +71,7 @@ function Register() {
                             value={email}
                             onChange={onChange}
                             placeholder=" Email Address"
-                            required />
+                             />
 
 
                         <div className="relative">
@@ -50,7 +81,7 @@ function Register() {
                                 value={password}
                                 onChange={onChange}
                                 placeholder=" Password"
-                                required />
+                                />
                             {showPassword ? (<AiFillEyeInvisible className="absolute right-3 top-4 text-xl curser-pointer"
                                 onClick={() => setShowPassword
                                     ((prevState) => !prevState)} />) :
@@ -62,11 +93,11 @@ function Register() {
                         <div className="relative">
                             <input className="inputPassword"
                                 type={showPassword ? "text" : "password"}
-                                id="password"
+                                id="confirmpassword"
                                 value={confirmpassword}
                                 onChange={onChange}
                                 placeholder="Confirm Password"
-                                required />
+                                />
                             {showPassword ? (<AiFillEyeInvisible className="absolute right-3 top-4 text-xl curser-pointer"
                                 onClick={() => setShowPassword
                                     ((prevState) => !prevState)} />) :

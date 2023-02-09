@@ -16,7 +16,9 @@ function ForgetPassword() {
     
     return (
         <section className="section">
-            <h1>Forgot Password</h1>
+            <h1 style={{
+              fontSize: "20px",
+            }}>Forgot Password</h1>
             <div className="container">
                 <div className="form">
                     <form >
