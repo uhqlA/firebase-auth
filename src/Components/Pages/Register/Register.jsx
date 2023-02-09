@@ -6,7 +6,7 @@ import OAuth from "../../OAuth/OAuth";
 import { createUserWithEmailAndPassword, getAuth,updateProfile } from "firebase/auth";
 import { db } from "../../../Firebase/Firebase"
 import { serverTimestamp, setDoc, doc } from "firebase/firestore";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
@@ -19,7 +19,7 @@ function Register() {
         password: "",
         confirmpassword: "",    });
     const { name, email, password,confirmpassword } = formData;
-    //const navigate = useNavigate ();
+    const navigate = useNavigate ();
     function onChange(e) {
         setFormData((prevState) => ({
             ...prevState,
@@ -43,8 +43,8 @@ function Register() {
            ();
                 //sends data to db (a promise)
            await setDoc(doc(db, "users", user.uid), formDataCopy)
-        //    toast.success("Registration successful");
-        //    navigate("/")
+           toast.success("Registration successful");
+           navigate("/login")
         } catch (error){
             toast.error("Something went wrong while Registering")
         }
