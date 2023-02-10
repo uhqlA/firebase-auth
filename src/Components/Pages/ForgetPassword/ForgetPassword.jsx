@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 import OAuth from "../../OAuth/OAuth";
 import { toast } from "react-toastify";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 function ForgetPassword() {
    
-
+    const navigate = useNavigate ();
     const [email, setEmail] = useState("");
     
     function onChange(e) {
@@ -22,6 +23,7 @@ function ForgetPassword() {
                     const auth = getAuth ()
                     await sendPasswordResetEmail (auth, email)
                     toast.success ("Link with password recovery was send to your email");
+                    navigate("/login")
 
                 }catch (error){
                     toast.error ("Could not send reset password");
