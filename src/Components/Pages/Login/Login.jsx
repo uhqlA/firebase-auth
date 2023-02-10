@@ -31,7 +31,7 @@ function Login() {
             const userCredential = await signInWithEmailAndPassword(auth,
                 email, password)
                 if(userCredential.user){
-                    navigate("/")
+                    navigate("/header")
                 }
 
         }catch (error) {
