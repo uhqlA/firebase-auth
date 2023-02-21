@@ -34,7 +34,7 @@ function ForgetPassword() {
       </video>
 
       <div className="cover-forget">
-        <h2 className="h1-forgot">Forget Password</h2>
+        <h2 className="h1-forgot">Forget Password?</h2>
         <p className="p-forgot">Enter your email to reset password</p>
 
         <div className="label">

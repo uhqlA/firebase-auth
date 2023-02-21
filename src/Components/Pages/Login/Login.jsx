@@ -6,7 +6,7 @@ import OAuth from "../../OAuth/OAuth";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import VideoBg from "../../Assets/video-5.mp4";
+import VideoBg from "../../Assets/video-2.mp4";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,10 +50,12 @@ function Login() {
 
       <div className="cover-login">
         <h1 className="h1-login">Login</h1>
+
         <div className="label">
           <form onSubmit={onSubmit}>
             <div className="form">
               <div className="div-form">
+
                 <input
                   className="input"
                   type="email"
