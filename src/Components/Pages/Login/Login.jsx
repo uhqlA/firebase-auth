@@ -42,6 +42,7 @@ function Login() {
   }
 
   return (
+    <div className="page">
     <div className="section">
       <div className="overlay"></div>
       <video autoPlay loop muted>
@@ -126,6 +127,7 @@ function Login() {
           </a>
         </p>
       </div>
+    </div>
     </div>
   );
 }

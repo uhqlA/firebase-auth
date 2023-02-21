@@ -18,12 +18,12 @@ function Header() {
         <header className="flex justify-between items-center px-3 max-w-6xl mx-auto">
             <div>
                 <img src={Logo} alt="Logo" className='Logo'
-                onClick={() => navigate("/")}/>
+                onClick={() => navigate("/home")}/>
             </div>
             <div>
                 <ul className='flex space-x-10'>
                     <li className={`cursor-pointer py-3 text-m font-semibold text-green-400 border-b-[3px] border-b-transparent ${pathRoute ("/") && "text-black border-b-red-500 "}`}
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/home")}
                     >Home</li>
                     <li className={`cursor-pointer py-3 text-m font-semibold text-green-400 border-b-[3px] border-b-transparent ${pathRoute ("/dashboard") && "text-black border-b-red-500 "}`}
                     onClick={() => navigate("/dashboard")}

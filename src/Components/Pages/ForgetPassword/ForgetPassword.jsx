@@ -27,6 +27,7 @@ function ForgetPassword() {
   }
 
   return (
+    <div className="page">
     <div className="section">
       <div className="overlay"></div>
       <video autoPlay loop muted>
@@ -87,6 +88,7 @@ function ForgetPassword() {
           {/* <Link to="/register">Register</Link> */}
         </p>
       </div>
+    </div>
     </div>
     </div>
   );

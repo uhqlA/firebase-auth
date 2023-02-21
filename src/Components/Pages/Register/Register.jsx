@@ -60,6 +60,7 @@ function Register() {
   }
 
   return (
+    <div className="page">
     <div className="section">
       <div className="overlay"></div>
       <video autoPlay loop muted>
@@ -171,6 +172,7 @@ function Register() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }
