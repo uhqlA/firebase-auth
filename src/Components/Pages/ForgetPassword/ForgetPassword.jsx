@@ -1,78 +1,94 @@
 import React, { useState } from "react";
-import "./ForgetPassword.css"
+import "./ForgetPassword.css";
+import VideoBg from "../../Assets/video-1.mp4";
 
-import { Link } from "react-router-dom";
-import OAuth from "../../OAuth/OAuth";
 import { toast } from "react-toastify";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-
 function ForgetPassword() {
-   
-    const navigate = useNavigate ();
-    const [email, setEmail] = useState("");
-    
-    function onChange(e) {
-        setEmail (e.target.value)
-        }
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
 
-        async function onSubmit(e){
-            e.preventDefault ()
-                try {
-                    const auth = getAuth ()
-                    await sendPasswordResetEmail (auth, email)
-                    toast.success ("Link with password recovery was send to your email");
-                    navigate("/login")
+  function onChange(e) {
+    setEmail(e.target.value);
+  }
 
-                }catch (error){
-                    toast.error ("Could not send reset password");
-                }
-            
-        }
-    
-    return (
-        <section className="section">
-            <h1 style={{
-              fontSize: "20px",
-            }}>Forgot Password</h1>
-            <div className="container">
-                <div className="form">
-                    <form onSubmit={onSubmit}>
-                        <input className="inputEmail"
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={onChange}
-                            placeholder=" Email Address"
-                            required />
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Link with password recovery was send to your email");
+      navigate("/login");
+    } catch (error) {
+      toast.error("Could not send reset password");
+    }
+  }
 
+  return (
+    <div className="section">
+      <div className="overlay"></div>
+      <video autoPlay loop muted>
+        <source src={VideoBg} type="" />
+      </video>
 
-                    
-                        <div className="account">
-                            <p className="register">New User?
-                                <Link to="/register"
-                                    className="text-red-600 hover:text-red-800
-                            transition duration-200
-                            ease-in-out ml=1">Register</Link>
-                            </p>
-                            <p className="register">
-                                <Link to="/login"
-                                    className="text-blue-600 hover:text-red-800
-                                transition duration-200
-                                ease-in-out">Login instead.</Link>
-                            </p>
-                        </div>
-                        <button className="btn" type="subtmit" >reset password</button>
-                        <div className="div-1">
-                            <p>or</p>
-                        </div>
-                        <OAuth />
-                    </form>
-                </div>
-            </div>
-        </section>
+      <div className="cover-forget">
+        <h2 className="h1-forgot">Forget Password</h2>
+        <p className="p-forgot">Enter your email to reset password</p>
 
-    )
+        <div className="label">
+          <form onSubmit={onSubmit}>
+            <div className="form">
+              <div className="div-form">
+              
+                <input
+                  className="input-forgot"
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={onChange}
+                  placeholder=" Email Address"
+                  required
+                />              
+              <button className="submit-btn" type="submit">
+                Reset Password
+              </button>
+              </div>
+              </div>
+          
+          </form>
+       
+
+        <p className="register">
+          Have and Account?
+          <a
+            href="/"
+            style={{
+              color: "blue",
+              fontWeight: "bold",
+            }}
+          >
+            Login Instead.
+          </a>
+        
+        </p>
+        <p className="register">
+          Don't have an account?
+          <a
+            href="/register"
+            style={{
+              color: "blue",
+              fontWeight: "bold",
+            }}
+          >
+            Register.
+          </a>
+          {/* <Link to="/register">Register</Link> */}
+        </p>
+      </div>
+    </div>
+    </div>
+  );
 }
 export default ForgetPassword;

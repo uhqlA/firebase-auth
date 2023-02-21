@@ -1,4 +1,4 @@
-.section {
+/* .section {
     font-size: 30px;
     text-align: center;
     margin-top: 24px;
@@ -113,7 +113,7 @@
     font-weight: 600;  
     margin-top: 24px;
     margin-bottom: 24px;
-    /* display: flex; */
+   
     align-items: center;
   }
   
@@ -126,4 +126,129 @@
    .login{
     font-size: 15px;
    }
-  }
+  } */
+
+  .page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url("https://res.cloudinary.com/dtpgi0zck/image/upload/s--1gj6YNao--/c_fill,h_580,w_860/v1/EducationHub/photos/hoh-river-valley.jpg"); */
+}
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.section video{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cover-register{
+  background-color: white;
+  width: 22em;
+  height: 33em;
+  position: relative;
+  border-radius: 1em;
+  box-shadow: 0 0.188em 1.550em rgb(156, 156, 156);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 30%;
+  padding-bottom: 2rem;
+  opacity: 0.8;
+}
+
+
+.h1-register{
+  margin-top: 0.5em;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.form{
+    
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+  
+}
+.div-form{
+  padding-bottom: 2px;
+}
+
+
+.input{
+  background-color: rgb(239, 234, 225);
+  padding-bottom: 4px;
+  border-radius: 5px;
+  width: 20rem;
+  height: 35px;
+  box-sizing: border-box;border-color: green;
+  border-spacing: 5px 1rem;
+  border: 1px solid rgb(172, 171, 171);
+  border-radius: 10px;
+  padding: 1vw 1vw;
+  outline: none;
+  margin: 5px;
+  display: block;
+  margin-top: 1rem;
+}
+
+.register-btn {
+  font-size: 1rem;
+  width: 18rem;
+  height: 2rem;
+  color: white;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-top: 1em;
+}
+.register-btn:hover{
+  background-color: rgb(7, 49, 7);
+  color: white;
+
+}
+
+.or-para{
+  font-weight: 500;
+  font-size: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1em;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login{
+  padding-top: 2rem;
+  text-align: center;
+  font-weight: 400;
+}
