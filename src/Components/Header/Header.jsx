@@ -30,7 +30,7 @@ function Header() {
                     >Dashboard</li>
                     <li className={`cursor-pointer py-3 text-m font-semibold text-green-400 border-b-[3px] border-b-transparent ${pathRoute ("/login") && "text-black border-b-red-500 "}`}
                     onClick={() => navigate("/login")}
-                    >Login</li>
+                    >Logout</li>
                 </ul>
             </div>
         </header>
